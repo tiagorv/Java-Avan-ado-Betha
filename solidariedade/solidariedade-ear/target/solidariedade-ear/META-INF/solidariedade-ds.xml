@@ -27,7 +27,7 @@
         <driver>org.postgresql</driver>
         <driver-class>org.postgresql.Driver</driver-class>
         <security>
-            <user-name>admin</user-name>
+            <user-name>postgres</user-name>
             <password>admin</password>
         </security>
     </datasource>    

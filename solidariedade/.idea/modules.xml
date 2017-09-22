@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/solidariedade.iml" filepath="$PROJECT_DIR$/solidariedade.iml" />
+      <module fileurl="file://$PROJECT_DIR$/solidariedade-ear/solidariedade-ear.iml" filepath="$PROJECT_DIR$/solidariedade-ear/solidariedade-ear.iml" />
+      <module fileurl="file://$PROJECT_DIR$/solidariedade-ejb/solidariedade-ejb.iml" filepath="$PROJECT_DIR$/solidariedade-ejb/solidariedade-ejb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/solidariedade-web/solidariedade-web.iml" filepath="$PROJECT_DIR$/solidariedade-web/solidariedade-web.iml" />
+    </modules>
+  </component>
+</project>
