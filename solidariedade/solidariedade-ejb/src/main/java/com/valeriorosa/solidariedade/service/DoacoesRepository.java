@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.validation.Valid;
 
 @Stateless
 public class DoacoesRepository {
@@ -22,11 +23,11 @@ public class DoacoesRepository {
         return entityManager.find(Doacoes.class, id);
     }
 
-    public void gravar(Doacoes doacao) {
+    public void gravar(@Valid Doacoes doacao) {
         entityManager.persist(doacao);
     }
 
-    public void update(Doacoes doacao) {
+    public void update(@Valid Doacoes doacao) {
         entityManager.merge(doacao);
     }
     

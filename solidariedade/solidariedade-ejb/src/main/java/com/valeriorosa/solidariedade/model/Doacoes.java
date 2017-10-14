@@ -1,14 +1,17 @@
 package com.valeriorosa.solidariedade.model;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -16,26 +19,26 @@ import javax.validation.constraints.NotNull;
 @Table(name = "doacoes")
 public class Doacoes implements Serializable{
     
-    private static final long serialVersionUID = 1L;
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)    
-    @Column(name = "id")
+    @Column(name = "doacao_id")
     private Long id;
     
-    @ManyToOne
-    @JoinColumn(name = "pessoa_id")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "pessoa_id", nullable = false, 
+            foreignKey = @ForeignKey(name = "fk_doacoes_pessoas", value = ConstraintMode.CONSTRAINT))
     private Pessoas pessoa;
     
-    @ManyToOne
-    @JoinColumn(name = "familia_id")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "familia_id", nullable = false, 
+            foreignKey = @ForeignKey(name = "fk_doacoes_familias", value = ConstraintMode.CONSTRAINT))
     private Familias familia;
     
-    @NotNull
+    @NotNull(message = "O mês da doação deve ser informado!")
     @Column(name = "mes")
     private int mes;        
     
-    @NotNull
+    @NotNull(message = "O ano da doação deve ser informado!")
     @Column(name = "ano")
     private int ano;    
     
@@ -54,6 +57,22 @@ public class Doacoes implements Serializable{
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Pessoas getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoas pessoa) {
+        this.pessoa = pessoa;
+    }
+
+    public Familias getFamilia() {
+        return familia;
+    }
+
+    public void setFamilia(Familias familia) {
+        this.familia = familia;
     }
 
     public int getMes() {
@@ -95,21 +114,4 @@ public class Doacoes implements Serializable{
     public void setLeite(String leite) {
         this.leite = leite;
     }
-
-    public Pessoas getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(Pessoas pessoa) {
-        this.pessoa = pessoa;
-    }
-
-    public Familias getFamilia() {
-        return familia;
-    }
-
-    public void setFamilia(Familias familia) {
-        this.familia = familia;
-    }
-    
 }

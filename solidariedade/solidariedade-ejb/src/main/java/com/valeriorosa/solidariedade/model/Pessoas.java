@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.valeriorosa.solidariedade.model;
 
+import com.valeriorosa.solidariedade.util.Cpf;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,43 +9,40 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 
 @Entity
 @Table(name = "pessoas")
 public class Pessoas implements Serializable{
-    
-    private static final long serialVersionUID = 1L;
+    //private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "pessoa_id")
     private Long id;
     
-    @NotNull
+    @NotNull(message = "O tipo da pessoa deve ser informado!")
     @Column(name = "tipo")
     private String tipo;
     
+    @Cpf
     @Column(name = "cpf")
     private String cpf;    
     
     @Column(name = "cnpj")
     private String cnpj;    
     
-    @NotNull
+    @NotNull(message = "O nome da pessoa deve ser informado!")
     @Column(name = "nome")
     private String nome;
     
     @Column(name = "ddd")    
     private String ddd;
     
-    
-    @Size(min = 8, max = 10)
     @Column(name = "telefone")    
     private String telefone;
     
-    @Email
+    @Email(message = "E-mail da pessoa inválido!")
     @Column(name = "email")
     private String email;
     
@@ -73,6 +66,15 @@ public class Pessoas implements Serializable{
     
     @Column(name = "uf")
     private String uf;
+    
+    @Column(name = "usuario")
+    private String usuario;
+
+    @Column(name = "senha")
+    private String senha;
+    
+    @Column(name = "admin")
+    private String admin;
 
     public Long getId() {
         return id;
@@ -90,12 +92,36 @@ public class Pessoas implements Serializable{
         this.tipo = tipo;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getDdd() {
+        return ddd;
+    }
+
+    public void setDdd(String ddd) {
+        this.ddd = ddd;
     }
 
     public String getTelefone() {
@@ -168,5 +194,29 @@ public class Pessoas implements Serializable{
 
     public void setUf(String uf) {
         this.uf = uf;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(String admin) {
+        this.admin = admin;
     }
 }

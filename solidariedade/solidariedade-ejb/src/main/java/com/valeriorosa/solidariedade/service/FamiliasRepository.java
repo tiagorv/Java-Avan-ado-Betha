@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.validation.Valid;
 
 @Stateless
 public class FamiliasRepository {
@@ -22,17 +23,16 @@ public class FamiliasRepository {
         return entityManager.find(Familias.class, id);
     }
 
-    public void gravar(Familias familia) {
+    public void gravar(@Valid Familias familia) {
         entityManager.persist(familia);
     }
 
-    public void update(Familias familia) {
+    public void update(@Valid Familias familia) {
         entityManager.merge(familia);
     }
     
     public void remove(long id) {
         Familias familia = entityManager.getReference(Familias.class, id);
         entityManager.remove(familia);
-    }    
-    
+    }       
 }

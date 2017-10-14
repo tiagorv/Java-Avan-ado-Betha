@@ -4,28 +4,27 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 import org.hibernate.validator.constraints.Email;
 
 @Entity
-@XmlRootElement
 @Table(name = "familias")
 public class Familias implements Serializable{
     
     @Id
-    @GeneratedValue
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "familia_id")
     private Long id;
     
-    @NotNull
+    @NotNull(message = "A descrição da família deve ser informada!")
     @Column(name = "descricao")
     private String descricao;
     
-    @NotNull
+    @NotNull(message = "O responsável da família deve ser informado!")
     @Column(name = "responsavel")
     private String responsavel;    
     
@@ -38,7 +37,6 @@ public class Familias implements Serializable{
     @Column(name = "ddd")    
     private String ddd;
     
-    @Size(min = 8, max = 10)
     @Column(name = "telefone")    
     private String telefone;
     
