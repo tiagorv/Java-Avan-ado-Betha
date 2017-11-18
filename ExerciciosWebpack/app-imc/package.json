@@ -1,0 +1,16 @@
+{
+  "name": "app-imc",
+  "version": "1.0.0",
+  "description": "Calculo de IMC",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tiago Valério",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
+  }
+}
