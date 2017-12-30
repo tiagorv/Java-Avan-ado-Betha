@@ -36,11 +36,6 @@
         <!-- Favicon -->
         <link rel="shortcut icon" href="favicon.ico"/>
 
-        <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-messaging.js"></script>
-        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>        
     </head>
     <!-- END HEAD -->
 
@@ -57,19 +52,24 @@
                     <p class="promo-block-text">Queremos encontrar as pessoas que realmente precisam de sua ajuda.</p>                    
                 </div>
 
-                <form action="javascript:adicionaContato()">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="nome" type="text" class="form-control" name="nome" placeholder="Nome">
-                        </div>  <br>
-
+                <form action="javascript:validaUsuario()">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
                             <input id="email" type="text" class="form-control" name="email" placeholder="E-mail">
                         </div> <br>
 
-                        <button type="submit" class="btn btn-success">Enviar Contato</button>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input id="senha" type="text" class="form-control" name="senha" placeholder="Senha">
+                        </div>  <br>
+                        <button type="submit" class="btn btn-success">Acesso Solidário</button>
                 </form>
+
+                <br>
+
+                <form action="javascript:cadastraUsuario()">
+                        <button type="submit" class="btn btn-success">Cadastro Usuário</button>
+                </form>                
 
 
             </div>
@@ -142,26 +142,11 @@
         <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>        
 
         <script lang="text/javascript">
-            function adicionaContato(){
-
-                // Initialize Firebase
-                var config = {
-                    apiKey: "AIzaSyD13xbRdYyx6rB29bEr-6T7vUZnXf2BKcM",
-                    authDomain: "solidario-4b8d9.firebaseapp.com",
-                    databaseURL: "https://solidario-4b8d9.firebaseio.com",
-                    projectId: "solidario-4b8d9",
-                    storageBucket: "solidario-4b8d9.appspot.com",
-                    messagingSenderId: "191893728197"
-                };
-                firebase.initializeApp(config);
+            function validaUsuario(){
 
                 var nome  = $('#nome').val();
                 var email = $('#email').val();
 
-                firebase.database().ref(nome).set(email);
-
-                $('#nome').val('');                    
-                $('#email').val('');                                        
 
             }
 

@@ -1,6 +1,6 @@
 package com.valeriorosa.solidariedadebetha.service;
 
-import com.valeriorosa.solidariedadebetha.model.Pessoas;
+import com.valeriorosa.solidariedadebetha.model.Doadores;
 import com.valeriorosa.solidariedadebetha.util.PessoasDao;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -20,12 +20,12 @@ public class PessoasService {
     @Inject
     private PessoasDao dao;
     
-    public List<Pessoas> findAll() {
+    public List<Doadores> findAll() {
         return dao.findAll();
     }
     
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public Pessoas insert(@Valid Pessoas pessoa) {
+    public Doadores insert(@Valid Doadores pessoa) {
         dao.insert(pessoa);
         return pessoa;
     }

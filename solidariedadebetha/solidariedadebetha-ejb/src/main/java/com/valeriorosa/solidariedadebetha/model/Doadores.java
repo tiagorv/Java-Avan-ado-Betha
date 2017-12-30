@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.valeriorosa.solidariedadebetha.model;
 
 import java.io.Serializable;
@@ -8,65 +13,78 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 
+/**
+ *
+ * @author tiagorv
+ */
 @Entity
-@Table(name = "familias")
-public class Familias implements Serializable, Entidade{
+@Table(name = "doadores")
+public class Doadores implements Serializable, Entidade{
     
     @Id
+    @Column(name = "id_doadores")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_familias")
     private Long id;
     
-    @NotNull(message = "A descrição da família deve ser informada!")
-    @Column(name = "descricao")
-    private String descricao;
+    @NotNull
+    @Size(min = 5, max = 100)
+    @Column(name = "nome")
+    private String nome;
     
-    @NotNull(message = "O responsável da família deve ser informado!")
-    @Column(name = "responsavel")
-    private String responsavel;    
+    @NotNull
+    @Pattern(regexp = "([0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2})|[0-9]{2}\\.[0-9]{3}\\.[0-9]{3}/[0-9]{4}-[0-9]{2}",
+    message = "Deve corresponder a um CPF ou CNPJ formatado (ex.: 123.456.789-01)")
+    @Column(name = "nr_documento", nullable = false, unique = true)    
+    private String documento;
     
-    @Column(name = "criancas")
-    private int criancas;
+    @Size(max = 20)
+    @Column(name = "rg")
+    private String rg;    
     
-    @Column(name = "adultos")
-    private int adultos;
+    @Size(max = 2)
+    @Column(name = "ddd_tel")
+    private String ddd;
     
-    @Column(name = "ddd_tel")    
-    private String ddd_tel;
-    
-    @Column(name = "telefone")    
+    @Size(max = 10)
+    @Column(name = "telefone")
     private String telefone;
     
-    @Column(name = "ddd_cel")    
+    @Size(max = 2)
+    @Column(name = "ddd_cel")
     private String ddd_cel;
     
-    @Column(name = "celular")    
-    private String celular;    
+    @Size(max = 10)
+    @Column(name = "celular")
+    private String celular;
     
     @Email
+    @Size(max = 100)
     @Column(name = "email")
     private String email;
     
-    @Column(name = "numero")
-    private String numero;
-    
     @Column(name = "cep")
-    private String cep;
+    private String cep;    
     
     @Column(name = "rua")
     private String rua;
     
-    @Column(name = "bairro")
-    private String bairro;
+    @Column(name = "numero")
+    private String numero;
     
     @Column(name = "complemento")
     private String complemento;
     
+    @Column(name = "bairro")
+    private String bairro;
+    
     @Column(name = "cidade")
     private String cidade;
     
+    @Size(max = 2)
     @Column(name = "estado")
     private String estado;
 
@@ -78,44 +96,36 @@ public class Familias implements Serializable, Entidade{
         this.id = id;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getNome() {
+        return nome;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getResponsavel() {
-        return responsavel;
+    public String getDocumento() {
+        return documento;
     }
 
-    public void setResponsavel(String responsavel) {
-        this.responsavel = responsavel;
+    public void setDocumento(String documento) {
+        this.documento = documento;
     }
 
-    public int getCriancas() {
-        return criancas;
+    public String getRg() {
+        return rg;
     }
 
-    public void setCriancas(int criancas) {
-        this.criancas = criancas;
+    public void setRg(String rg) {
+        this.rg = rg;
     }
 
-    public int getAdultos() {
-        return adultos;
+    public String getDdd() {
+        return ddd;
     }
 
-    public void setAdultos(int adultos) {
-        this.adultos = adultos;
-    }
-
-    public String getDdd_tel() {
-        return ddd_tel;
-    }
-
-    public void setDdd_tel(String ddd_tel) {
-        this.ddd_tel = ddd_tel;
+    public void setDdd(String ddd) {
+        this.ddd = ddd;
     }
 
     public String getTelefone() {
@@ -150,14 +160,6 @@ public class Familias implements Serializable, Entidade{
         this.email = email;
     }
 
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
     public String getCep() {
         return cep;
     }
@@ -174,12 +176,12 @@ public class Familias implements Serializable, Entidade{
         this.rua = rua;
     }
 
-    public String getBairro() {
-        return bairro;
+    public String getNumero() {
+        return numero;
     }
 
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
     public String getComplemento() {
@@ -188,6 +190,14 @@ public class Familias implements Serializable, Entidade{
 
     public void setComplemento(String complemento) {
         this.complemento = complemento;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
     }
 
     public String getCidade() {

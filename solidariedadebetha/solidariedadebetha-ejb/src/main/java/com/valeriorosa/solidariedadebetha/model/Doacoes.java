@@ -5,6 +5,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -21,22 +23,22 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "doacoes")
-public class Doacoes implements Serializable{
+public class Doacoes implements Serializable, Entidade{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)    
-    @Column(name = "doacao_id")
+    @Column(name = "id_doacoes")
     private Long id;
     
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "pessoa_id", nullable = false, 
+    @JoinColumn(name = "id_doadores", nullable = false, 
             foreignKey = @ForeignKey(name = "fk_doacoes_pessoas", value = ConstraintMode.CONSTRAINT))
-    private Pessoas pessoa;
+    private Doadores id_doadores;
     
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "familia_id", nullable = false, 
+    @JoinColumn(name = "id_familias", nullable = false, 
             foreignKey = @ForeignKey(name = "fk_doacoes_familias", value = ConstraintMode.CONSTRAINT))
-    private Familias familia;
+    private Familias id_familias;
     
     @NotNull(message = "O mês da doação deve ser informado!")
     @Column(name = "mes")
@@ -47,13 +49,24 @@ public class Doacoes implements Serializable{
     private int ano;    
     
     @Column(name = "cesta_basica")
-    private String cestaBasica;    
+    @Enumerated(EnumType.STRING)
+    private SimNao cestaBasica;    
     
-    @Column(name = "higiene")
-    private String higiene;
+    @Column(name = "produto_limpeza")
+    @Enumerated(EnumType.STRING)
+    private SimNao produto_limpeza;
     
-    @Column(name = "leite")
-    private String leite;
+    @Column(name = "roupas")
+    @Enumerated(EnumType.STRING)
+    private SimNao roupas;
+    
+    @Column(name = "brinquedos")
+    @Enumerated(EnumType.STRING)
+    private SimNao brinquedos;    
+    
+    @Column(name = "situacao")
+    @Enumerated(EnumType.STRING)
+    private Situacao situacao;    
 
     public Long getId() {
         return id;
@@ -63,20 +76,20 @@ public class Doacoes implements Serializable{
         this.id = id;
     }
 
-    public Pessoas getPessoa() {
-        return pessoa;
+    public Doadores getId_doadores() {
+        return id_doadores;
     }
 
-    public void setPessoa(Pessoas pessoa) {
-        this.pessoa = pessoa;
+    public void setId_doadores(Doadores id_doadores) {
+        this.id_doadores = id_doadores;
     }
 
-    public Familias getFamilia() {
-        return familia;
+    public Familias getId_familias() {
+        return id_familias;
     }
 
-    public void setFamilia(Familias familia) {
-        this.familia = familia;
+    public void setId_familias(Familias id_familias) {
+        this.id_familias = id_familias;
     }
 
     public int getMes() {
@@ -95,27 +108,43 @@ public class Doacoes implements Serializable{
         this.ano = ano;
     }
 
-    public String getCestaBasica() {
+    public SimNao getCestaBasica() {
         return cestaBasica;
     }
 
-    public void setCestaBasica(String cestaBasica) {
+    public void setCestaBasica(SimNao cestaBasica) {
         this.cestaBasica = cestaBasica;
     }
 
-    public String getHigiene() {
-        return higiene;
+    public SimNao getProduto_limpeza() {
+        return produto_limpeza;
     }
 
-    public void setHigiene(String higiene) {
-        this.higiene = higiene;
+    public void setProduto_limpeza(SimNao produto_limpeza) {
+        this.produto_limpeza = produto_limpeza;
     }
 
-    public String getLeite() {
-        return leite;
+    public SimNao getRoupas() {
+        return roupas;
     }
 
-    public void setLeite(String leite) {
-        this.leite = leite;
-    }    
+    public void setRoupas(SimNao roupas) {
+        this.roupas = roupas;
+    }
+
+    public SimNao getBrinquedos() {
+        return brinquedos;
+    }
+
+    public void setBrinquedos(SimNao brinquedos) {
+        this.brinquedos = brinquedos;
+    }
+
+    public Situacao getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Situacao situacao) {
+        this.situacao = situacao;
+    }
 }

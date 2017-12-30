@@ -1,6 +1,6 @@
 package com.valeriorosa.solidariedadebetha.rest;
 
-import com.valeriorosa.solidariedadebetha.model.Pessoas;
+import com.valeriorosa.solidariedadebetha.model.Doadores;
 import com.valeriorosa.solidariedadebetha.service.PessoasService;
 import java.util.List;
 import javax.inject.Inject;
@@ -24,14 +24,14 @@ public class PessoasResource {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Pessoas> findAll() {
+    public List<Doadores> findAll() {
         return service.findAll();
     }
     
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response insert(Pessoas pessoa) {
+    public Response insert(Doadores pessoa) {
         return Response.status(Response.Status.CREATED)
                 .entity(service.insert(pessoa)).build();
     }

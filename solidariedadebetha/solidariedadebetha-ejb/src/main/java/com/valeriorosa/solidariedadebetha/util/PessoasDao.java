@@ -1,6 +1,6 @@
 package com.valeriorosa.solidariedadebetha.util;
 
-import com.valeriorosa.solidariedadebetha.model.Pessoas;
+import com.valeriorosa.solidariedadebetha.model.Doadores;
 import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -14,15 +14,15 @@ public class PessoasDao {
     @Inject
     private EntityManager em;
     
-    public List<Pessoas> findAll() {
+    public List<Doadores> findAll() {
         return em.createQuery("SELECT p FROM Pessoas p").getResultList();
     }
     
-    public Pessoas findById(long id) {
-        return em.find(Pessoas.class, id);
+    public Doadores findById(long id) {
+        return em.find(Doadores.class, id);
     }
     
-    public void insert(@Valid Pessoas pessoa) {
+    public void insert(@Valid Doadores pessoa) {
         em.persist(pessoa);
     }        
 }
