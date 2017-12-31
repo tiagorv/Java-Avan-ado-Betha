@@ -1,6 +1,6 @@
 package com.valeriorosa.solidariedadebetha.service;
 
-import com.valeriorosa.solidariedadebetha.model.Doacoes;
+import com.valeriorosa.solidariedadebetha.model.Doadores;
 import com.valeriorosa.solidariedadebetha.util.GenericDao;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -9,12 +9,12 @@ import javax.inject.Inject;
 
 @Stateless
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-public class DoacoesService  extends AbstractCrudService<Doacoes>{
+public class DoadoresService extends AbstractCrudService<Doadores>{
     @Inject
-    private GenericDao<Doacoes> dao;
+    private GenericDao<Doadores> dao;
 
     @Override
-    protected GenericDao<Doacoes> getDao() {
+    protected GenericDao<Doadores> getDao() {
         return dao;
     }    
 }
