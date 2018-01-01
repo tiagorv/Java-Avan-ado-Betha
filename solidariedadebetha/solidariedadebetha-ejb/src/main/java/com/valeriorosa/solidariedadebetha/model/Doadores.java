@@ -47,7 +47,7 @@ public class Doadores implements Serializable, Entidade{
     
     @Size(max = 2)
     @Column(name = "ddd_tel")
-    private String ddd;
+    private String ddd_tel;
     
     @Size(max = 10)
     @Column(name = "telefone")
@@ -120,12 +120,12 @@ public class Doadores implements Serializable, Entidade{
         this.rg = rg;
     }
 
-    public String getDdd() {
-        return ddd;
+    public String getDdd_tel() {
+        return ddd_tel;
     }
 
-    public void setDdd(String ddd) {
-        this.ddd = ddd;
+    public void setDdd_tel(String ddd_tel) {
+        this.ddd_tel = ddd_tel;
     }
 
     public String getTelefone() {

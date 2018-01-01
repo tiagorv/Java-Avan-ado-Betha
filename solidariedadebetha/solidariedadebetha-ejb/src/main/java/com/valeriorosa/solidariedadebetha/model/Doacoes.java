@@ -27,10 +27,10 @@ public class Doacoes implements Serializable, Entidade{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)    
-    @Column(name = "id_doacoes")
+    @Column(name = "doacoes_id")
     private Long id;
     
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+/*    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_doadores", nullable = false, 
             foreignKey = @ForeignKey(name = "fk_doacoes_pessoas", value = ConstraintMode.CONSTRAINT))
     private Doadores id_doadores;
@@ -38,7 +38,7 @@ public class Doacoes implements Serializable, Entidade{
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_familias", nullable = false, 
             foreignKey = @ForeignKey(name = "fk_doacoes_familias", value = ConstraintMode.CONSTRAINT))
-    private Familias id_familias;
+    private Familias id_familias;*/
     
     @NotNull(message = "O mês da doação deve ser informado!")
     @Column(name = "mes")
@@ -76,7 +76,7 @@ public class Doacoes implements Serializable, Entidade{
         this.id = id;
     }
 
-    public Doadores getId_doadores() {
+/*    public Doadores getId_doadores() {
         return id_doadores;
     }
 
@@ -91,7 +91,7 @@ public class Doacoes implements Serializable, Entidade{
     public void setId_familias(Familias id_familias) {
         this.id_familias = id_familias;
     }
-
+*/
     public int getMes() {
         return mes;
     }
