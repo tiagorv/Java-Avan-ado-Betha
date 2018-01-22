@@ -1,0 +1,68 @@
+<div class="container-fluid">
+    <div class="row justify-content-sm-center">
+        <div class="col-sm-8">
+            <h2 class="title">{{vm.title}}</h2>
+            <form>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="mes" class="col-form-label">Mês</label>
+                        <input type="text" ng-model="vm.record.mes" class="form-control" id="mes" placeholder="Informe o mês da doação">
+                    </div>            
+        
+                    <div class="form-group col-md-6">
+                        <label for="ano" class="col-form-label">Ano</label>
+                        <input type="text" ng-model="vm.record.ano" class="form-control" id="ano" placeholder="Informe o ano da doação">
+                    </div>     
+                </div>
+
+                <div class="form-group">
+                    <label>Doador</label>
+                    <select 
+                      class="form-control" 
+                      ng-model="vm.record.doador"
+                      ng-options="doador as doador.nome for doador in vm.doadores track by doador.id">
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Família</label>
+                    <select 
+                      class="form-control" 
+                      ng-model="vm.record.familia"
+                      ng-options="familia as familia.nome for familia in vm.familias track by familia.id">
+                    </select>
+                </div>        
+                
+                
+                <label>Cesta Básica:
+                    <input type="checkbox" ng-model="vm.record.cesta_basica"
+                           ng-true-value="'YES'" ng-false-value="'NO'">
+                </label>               
+
+                <label>Leite:
+                    <input type="checkbox" ng-model="vm.record.leite"
+                           ng-true-value="'YES'" ng-false-value="'NO'">
+                </label>
+
+                <label>Produto Limpeza:
+                    <input type="checkbox" ng-model="vm.record.produto_limpeza"
+                           ng-true-value="'YES'" ng-false-value="'NO'">
+                </label>
+
+                <label>Brinquedos:
+                    <input type="checkbox" ng-model="vm.record.brinquedo"
+                           ng-true-value="'YES'" ng-false-value="'NO'">
+                </label>                
+                
+                <label>Roupas:
+                    <input type="checkbox" ng-model="vm.record.roupas"
+                           ng-true-value="'YES'" ng-false-value="'NO'">
+                </label>                
+    
+                <button ng-click="vm.save()" type="button" class="btn btn-primary btn-lg">Salvar Registro</button>
+                <a ui-sref="doacao.list" class="btn btn-danger">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
